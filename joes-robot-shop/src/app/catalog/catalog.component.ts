@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { IProduct } from './product.model';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'bot-catalog',
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
-  //styles : ['a {font-weight:bold;}']
 })
 export class CatalogComponent {
   products: any;
   filter: string = '';
-
-  constructor() {
+  
+  constructor(private cartSvc: CartService) {
     this.products = [
       {
         id: 1,
@@ -187,6 +187,10 @@ export class CatalogComponent {
         discount: 0,
       },
     ];
+  }
+
+  addToCart(product: IProduct) {
+    this.cartSvc.add(product);
   }
 
   getDiscountedClasses(product: IProduct) {
