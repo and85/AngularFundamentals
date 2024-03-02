@@ -4,11 +4,11 @@ import { IProduct } from '../catalog/product.model';
 @Component({
   selector: 'bot-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent {
   @Input() product!: IProduct;
-  @Output() buy = new EventEmitter()
+  @Output() buy = new EventEmitter();
 
   getImageUrl(product: IProduct) {
     if (!product) return '';
@@ -16,6 +16,6 @@ export class ProductDetailsComponent {
   }
 
   buyButtonClicked(product: IProduct) {
-    this.buy.emit()
+    this.buy.emit();
   }
 }
